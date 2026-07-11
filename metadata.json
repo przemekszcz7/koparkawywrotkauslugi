@@ -1,0 +1,6 @@
+{
+  "name": "Koparka Wywrotka Usługi",
+  "description": "Profesjonalne usługi ziemne i transportowe - Roboty ziemne, wykopy, transport wywrotką",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

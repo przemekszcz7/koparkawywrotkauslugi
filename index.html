@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koparka Wywrotka Usługi | Profesjonalne Usługi Ziemne i Transportowe</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/k648PV2Q/612725757-1805693040201911-4830537511870457540-n.jpg">
+    
+    <!-- Google Fonts: Montserrat for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Theme Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#1f4d36',
+                        brandGreenHover: '#153525',
+                        brandGreenLight: '#eef6f2',
+                        brandRed: '#c62828',
+                        brandRedHover: '#b71c1c',
+                        brandGray: '#f5f5f5',
+                        brandTextDark: '#111827',
+                        brandTextLight: '#4b5563',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles for Transitions, Lightbox, Scrollbars, and Interactive Effects -->
+    <style>
+        /* Custom scrollbar matching branding colors */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f4d36;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #153525;
+        }
+
+        /* Scroll reveal effect */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                        transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism utility */
+        .glass-header {
+            background: rgba(31, 77, 54, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Shine animations and hover effect */
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(30deg);
+            transition: none;
+            opacity: 0;
+        }
+        .shine-effect:hover::after {
+            animation: shine 0.8s ease-in-out;
+        }
+        @keyframes shine {
+            0% {
+                left: -60%;
+                opacity: 1;
+            }
+            100% {
+                left: 130%;
+                opacity: 0;
+            }
+        }
+
+        /* Pulse animation for CTA phone button */
+        @keyframes custom-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.4);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 15px rgba(198, 40, 40, 0);
+            }
+        }
+        .animate-custom-pulse {
+            animation: custom-pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-brandTextDark bg-white antialiased overflow-x-hidden selection:bg-brandGreen selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Brand Name -->
+                <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                    <img src="https://i.ibb.co/k648PV2Q/612725757-1805693040201911-4830537511870457540-n.jpg" 
+                         alt="Logo" 
+                         id="nav-logo"
+                         class="w-10 h-10 rounded-full object-cover border-2 border-white group-hover:scale-105 transition-transform duration-300">
+                    <div class="leading-none">
+                        <span class="font-display font-extrabold text-white text-base sm:text-lg tracking-wider block">
+                            KOPARKA WYWROTKA
+                        </span>
+                        <span class="text-xs font-semibold text-brandRed tracking-widest uppercase block mt-0.5">
+                            USŁUGI ZIEMNE
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#o-firmie" class="text-white hover:text-brandRed font-medium text-sm transition-colors tracking-wide">O nas</a>
+                    <a href="#uslugi" class="text-white hover:text-brandRed font-medium text-sm transition-colors tracking-wide">Usługi</a>
+                    <a href="#galeria" class="text-white hover:text-brandRed font-medium text-sm transition-colors tracking-wide">Realizacje</a>
+                    <a href="#dlaczego-my" class="text-white hover:text-brandRed font-medium text-sm transition-colors tracking-wide">Dlaczego warto</a>
+                    <a href="#kontakt" class="text-white hover:text-brandRed font-medium text-sm transition-colors tracking-wide">Kontakt</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center">
+                    <a href="tel:884641888" class="shine-effect bg-brandRed hover:bg-brandRedHover text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg transition-transform duration-200 hover:-translate-y-0.5 flex items-center gap-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.24 2.46.68 3.58a1 1 0 0 1-.27 1.11l-2.2 2.2z"/>
+                        </svg>
+                        884 641 888
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="text-white hover:text-brandRed focus:outline-none p-1.5 rounded-lg transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path id="hamburger-icon" class="block" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-drawer" class="hidden md:hidden absolute top-full left-0 w-full bg-brandGreen border-t border-white/10 shadow-2xl transition-all duration-300 overflow-hidden max-h-0">
+            <div class="px-4 py-6 space-y-4 flex flex-col items-center">
+                <a href="#o-firmie" class="mobile-nav-link text-white hover:text-brandRed text-base font-semibold transition-colors py-2">O nas</a>
+                <a href="#uslugi" class="mobile-nav-link text-white hover:text-brandRed text-base font-semibold transition-colors py-2">Usługi</a>
+                <a href="#galeria" class="mobile-nav-link text-white hover:text-brandRed text-base font-semibold transition-colors py-2">Realizacje</a>
+                <a href="#dlaczego-my" class="mobile-nav-link text-white hover:text-brandRed text-base font-semibold transition-colors py-2">Dlaczego warto</a>
+                <a href="#kontakt" class="mobile-nav-link text-white hover:text-brandRed text-base font-semibold transition-colors py-2">Kontakt</a>
+                <a href="tel:884641888" class="w-full max-w-xs text-center bg-brandRed hover:bg-brandRedHover text-white py-3 rounded-lg font-bold shadow-md transition-all duration-200 flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.24 2.46.68 3.58a1 1 0 0 1-.27 1.11l-2.2 2.2z"/>
+                    </svg>
+                    Zadzwoń: 884 641 888
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 bg-cover bg-center" style="background-image: url('https://i.ibb.co/4CMrWx5/614254156-1805694083535140-961724372781033193-n.jpg');">
+        <!-- Brand Colored Dark Gradient Overlay for optimal text readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-brandGreen/95 via-brandGreen/80 to-brandGreen/40"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Floating Particles/Aesthetic Construction Grid Accent -->
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 z-10 w-full">
+            <div class="max-w-3xl text-left">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 bg-brandRed/90 text-white font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full tracking-wider uppercase mb-6 shadow-lg border border-brandRed animate-pulse">
+                    <span class="w-2.5 h-2.5 rounded-full bg-white block"></span>
+                    Szybkie terminy i bezpłatna wycena
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-none drop-shadow-md">
+                    Koparka Wywrotka <span class="text-brandRed block mt-1 sm:inline">Usługi</span>
+                </h1>
+
+                <!-- Slogan -->
+                <p class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-brandGray mt-4 sm:mt-6 tracking-wide drop-shadow">
+                    Profesjonalne usługi ziemne i transportowe
+                </p>
+
+                <!-- Description -->
+                <p class="text-white/90 text-base sm:text-lg mt-6 leading-relaxed max-w-2xl font-light">
+                    Świadczymy kompleksowe usługi koparką oraz wywrotką dla klientów indywidualnych i firm. Gwarantujemy solidność, terminowość oraz profesjonalne podejście do każdego zlecenia.
+                </p>
+
+                <!-- Call To Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10">
+                    <a href="tel:884641888" class="animate-custom-pulse shine-effect flex items-center justify-center gap-3 bg-brandRed hover:bg-brandRedHover text-white px-8 py-4 rounded-xl text-lg font-bold shadow-2xl transition-all duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.24 2.46.68 3.58a1 1 0 0 1-.27 1.11l-2.2 2.2z"/>
+                        </svg>
+                        Zadzwoń
+                    </a>
+                    <a href="#kontakt" class="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 hover:border-white px-8 py-4 rounded-xl text-lg font-bold transition-all duration-300 backdrop-blur-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Skontaktuj się
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave / Bottom Slope effect -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[30px] md:h-[60px] fill-white">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,57.05,18.3,90.13,27.93,188.66,56.62,263.39,67.23,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- O FIRMIE SECTION -->
+    <section id="o-firmie" class="py-24 relative overflow-hidden bg-white scroll-mt-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="reveal">
+                <!-- Section Tag -->
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2 border-l-4 border-brandRed pl-3">Poznaj nas bliżej</span>
+                
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-brandGreen tracking-tight leading-tight mb-6">
+                    Świadczymy najwyższej jakości usługi ziemne
+                </h2>
+                
+                <div class="space-y-6 text-brandTextLight text-base sm:text-lg leading-relaxed">
+                    <p class="font-medium text-brandTextDark">
+                        Oferujemy profesjonalne usługi koparką oraz wywrotką, realizując prace ziemne, przygotowanie terenu, transport materiałów oraz wiele innych zleceń. Dzięki nowoczesnemu sprzętowi oraz doświadczeniu zapewniamy sprawną realizację każdej inwestycji.
+                    </p>
+                    <p>
+                        Dla nas liczy się każdy szczegół. Rozumiemy, jak ważne są prace przygotowawcze w procesie budowlanym. Posiadamy wykwalifikowaną kadrę operatorów, którzy z chirurgiczną precyzją i dbałością o zasady BHP wykonają każde powierzone zadanie w wyznaczonym terminie.
+                    </p>
+                </div>
+
+                <!-- Short Visual List of Trust -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 border-t border-gray-100 pt-8">
+                    <div class="flex items-center gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brandGreenLight flex items-center justify-center text-brandGreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <span class="font-bold text-brandTextDark text-sm sm:text-base">Pełna gwarancja jakości</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brandGreenLight flex items-center justify-center text-brandGreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <span class="font-bold text-brandTextDark text-sm sm:text-base">Bezpłatna wycena robót</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brandGreenLight flex items-center justify-center text-brandGreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <span class="font-bold text-brandTextDark text-sm sm:text-base">Nowoczesne maszyny</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brandGreenLight flex items-center justify-center text-brandGreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <span class="font-bold text-brandTextDark text-sm sm:text-base">Szybki dojazd na plac prac</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NASZE USŁUGI SECTION -->
+    <section id="uslugi" class="py-24 bg-brandGray relative scroll-mt-10">
+        <!-- Accent line -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brandGreen via-brandRed to-brandGreen"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Szeroki wachlarz prac</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-brandGreen tracking-tight mb-4">
+                    Kompleksowe Usługi Ziemne & Transportowe
+                </h2>
+                <p class="text-brandTextLight text-base sm:text-lg">
+                    Realizujemy wszelkie zlecenia z użyciem specjalistycznego sprzętu najwyższej klasy. Przekonaj się, w czym możemy Ci pomóc.
+                </p>
+            </div>
+
+            <!-- Services Grid: 10 elements -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Roboty ziemne -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Shovel/Excavation SVG Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20m0-20H6a2 2 0 00-2 2v2a2 2 0 002 2h6m0-6h6a2 2 0 012 2v2a2 2 0 01-2 2h-6M4 14h16"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Roboty ziemne</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Wykonujemy wszelkie makroniwelacje, zasypki oraz wykopy pod kable, rury wodno-kanalizacyjne i drenaże.
+                    </p>
+                </div>
+
+                <!-- Service 2: Wykopy pod fundamenty -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Foundation/Home construction Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11v11a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Wykopy pod fundamenty</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Precyzyjne przygotowanie wykopów pod ławy fundamentowe domów, garaży, hal przemysłowych i ogrodzeń.
+                    </p>
+                </div>
+
+                <!-- Service 3: Niwelacja terenu -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Level line/earth Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h16M4 14h16M4 6h16M4 18h16"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Niwelacja terenu</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Dokładne pomiary wysokościowe i profesjonalne wyrównywanie poziomów gruntu na dowolnym obszarze.
+                    </p>
+                </div>
+
+                <!-- Service 4: Załadunek materiałów -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Forklift / Loader Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 11v6m0-6H7V5h10v6h-4zm1-8h-2"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Załadunek materiałów</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Szybki i sprawny mechaniczny załadunek ziemi, piasku, gruzu, czarnoziemu, kruszyw oraz innych materiałów sypkich.
+                    </p>
+                </div>
+
+                <!-- Service 5: Transport wywrotką -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Truck Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8h4l4 4v4a1 1 0 01-1 1h-1m-6 0h6m-10 1a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Transport wywrotką</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Niezawodny przewóz ładunków wywrotką. Transportujemy kruszywa, urobek, ziemię, odpady budowlane oraz materiały na plac budowy.
+                    </p>
+                </div>
+
+                <!-- Service 6: Rozładunek materiałów -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Unload/Arrow down Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Rozładunek materiałów</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Bezpieczny wysyp, składowanie i precyzyjne rozplantowanie dostarczonych materiałów sypkich we wskazanym punkcie.
+                    </p>
+                </div>
+
+                <!-- Service 7: Przygotowanie terenu pod inwestycje -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Ruler / Map Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Przygotowanie terenu</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Karczowanie zarośli, usuwanie pni i starych konstrukcji. Całościowe oczyszczenie placu przed rozpoczęciem budowy.
+                    </p>
+                </div>
+
+                <!-- Service 8: Wyrównywanie działek -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Level line graph Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v16h16M5 19l4-4 4 2 8-8"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Wyrównywanie działek</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Zagęszczanie, niwelowanie pagórków i dolin w celu przygotowania terenu pod założenie trawników, ogrodów i ścieżek.
+                    </p>
+                </div>
+
+                <!-- Service 9: Prace porządkowe -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Broom/Cleaning Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3">Prace porządkowe</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed">
+                        Wywożenie zalegającego gruzu, kamieni, korzeni drzew, pozostałości po wyburzeniach oraz porządkowanie terenu po budowie.
+                    </p>
+                </div>
+
+                <!-- Service 10: Obsługa osób i firm -->
+                <div class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative lg:col-span-3 lg:max-w-md lg:mx-auto overflow-hidden border-b-4 border-transparent hover:border-brandGreen reveal">
+                    <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <!-- Trust/Handshake Icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brandGreen mb-3 text-center lg:text-left">Dla osób prywatnych i firm</h3>
+                    <p class="text-brandTextLight text-sm leading-relaxed text-center lg:text-left">
+                        Oferujemy elastyczne formy współpracy. Realizujemy jednorazowe zlecenia dla osób prywatnych oraz stałe podwykonawstwo dla firm budowlanych.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA REALIZACJI SECTION -->
+    <section id="galeria" class="py-24 bg-white relative scroll-mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Nasze realizacje</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-brandGreen tracking-tight mb-4">
+                    Galeria Naszych Prac w Terenie
+                </h2>
+                <p class="text-brandTextLight text-base sm:text-lg">
+                    Kliknij wybrane zdjęcie, aby powiększyć je w interaktywnej przeglądarce i sprawdzić, jak profesjonalnie realizujemy zlecenia.
+                </p>
+            </div>
+
+            <!-- Elegant Responsive Photo Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+                
+                <!-- Photo 1 -->
+                <div class="reveal">
+                    <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-brandGray cursor-pointer transform hover:-translate-y-1 transition-all duration-300" onclick="openLightbox(0)">
+                        <!-- Photo Aspect Ratio wrapper -->
+                        <div class="aspect-[4/3] w-full overflow-hidden">
+                            <img src="https://i.ibb.co/nqpQScPS/614962532-122102612469203252-7665939470002349444-n.jpg" 
+                                 alt="Koparka w trakcie prac załadunkowych" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <!-- Blur Overlay Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandGreen/90 via-brandGreen/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 sm:p-8">
+                            <span class="bg-brandRed text-white text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase w-max mb-3">SPRZĘT W AKCJI</span>
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-white">Prace ziemne i załadunek koparką</h3>
+                            <p class="text-white/80 text-xs sm:text-sm mt-1 font-light">Dokładne profilowanie terenu oraz bezpieczny załadunek kruszywa.</p>
+                            <span class="mt-4 flex items-center gap-2 text-xs font-semibold text-white/95">
+                                <svg class="w-5 h-5 fill-current text-brandRed animate-pulse" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                Kliknij, aby powiększyć
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="reveal">
+                    <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-brandGray cursor-pointer transform hover:-translate-y-1 transition-all duration-300" onclick="openLightbox(1)">
+                        <!-- Photo Aspect Ratio wrapper -->
+                        <div class="aspect-[4/3] w-full overflow-hidden">
+                            <img src="https://i.ibb.co/mCdJwKY4/615078276-122102612553203252-3449471778006577850-n.jpg" 
+                                 alt="Transport i wyładunek wywrotką na placu budowy" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <!-- Blur Overlay Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandGreen/90 via-brandGreen/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 sm:p-8">
+                            <span class="bg-brandRed text-white text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase w-max mb-3">TRANSPORT</span>
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-white">Transport i rozładunek wywrotką</h3>
+                            <p class="text-white/80 text-xs sm:text-sm mt-1 font-light">Sprawny przewóz i wyładunek piasku na przygotowanym terenie.</p>
+                            <span class="mt-4 flex items-center gap-2 text-xs font-semibold text-white/95">
+                                <svg class="w-5 h-5 fill-current text-brandRed animate-pulse" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                Kliknij, aby powiększyć
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LIGHTBOX CONTAINER (VANILLA JS) -->
+    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[9999] hidden flex-col items-center justify-center p-4">
+        <!-- Close button top-right -->
+        <button onclick="closeLightbox()" aria-label="Zamknij" class="absolute top-6 right-6 text-white hover:text-brandRed transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Left Navigation Arrow -->
+        <button onclick="prevImage()" aria-label="Poprzednie zdjęcie" class="absolute left-4 sm:left-8 text-white hover:text-brandRed transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10 hidden sm:block">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+
+        <!-- Main Display Image Container with high quality loader -->
+        <div class="relative max-w-5xl max-h-[80vh] flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/10 transition-transform duration-300">
+        </div>
+
+        <!-- Right Navigation Arrow -->
+        <button onclick="nextImage()" aria-label="Następne zdjęcie" class="absolute right-4 sm:right-8 text-white hover:text-brandRed transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10 hidden sm:block">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+
+        <!-- Bottom Controls and Captions -->
+        <div class="w-full max-w-xl text-center mt-6">
+            <p id="lightbox-caption" class="text-white text-lg font-display font-semibold"></p>
+            <p id="lightbox-desc" class="text-white/60 text-sm mt-1 font-light"></p>
+            
+            <!-- Mobile Swipe / Tap Navigation help indicators -->
+            <div class="flex justify-center gap-4 mt-4 sm:hidden">
+                <button onclick="prevImage()" class="bg-white/10 text-white px-4 py-2 rounded-lg text-xs font-bold active:bg-brandRed">« Poprzednie</button>
+                <button onclick="nextImage()" class="bg-white/10 text-white px-4 py-2 rounded-lg text-xs font-bold active:bg-brandRed">Następne »</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DLACZEGO WARTO SECTION -->
+    <section id="dlaczego-my" class="py-24 bg-brandGreen relative overflow-hidden scroll-mt-10">
+        <!-- Accent decorative grids -->
+        <div class="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Dlaczego warto nam zaufać?</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight mb-4">
+                    Nasze Największe Atuty i Standard Pracy
+                </h2>
+                <p class="text-brandGray/80 text-base sm:text-lg">
+                    Działamy uczciwie, profesjonalnie i zawsze stawiamy na zadowolenie klienta. Przekonaj się, jakie korzyści niesie ze sobą współpraca z nami.
+                </p>
+            </div>
+
+            <!-- Grid of 8 Advantages -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Advantage 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Profesjonalny sprzęt</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Sprawne, nowoczesne i bezpieczne maszyny gotowe do najcięższych zadań.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Terminowa realizacja</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Szanujemy Twój czas. Umawiamy się na konkretną godzinę i dotrzymujemy obietnic.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Solidne wykonanie</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Bez kompromisów jakościowych. Wykonujemy prace dokładnie i zgodnie ze sztuką.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Doświadczenie</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Lata praktyki operatorów gwarantują optymalny i sprawny dobór metod pracy.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 5 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Indywidualne podejście</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Dostosowujemy plany realizacji i parametry wyceny ściśle pod Twoje specyficzne wymogi.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 6 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Konkurencyjne ceny</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Uczciwy i przejrzysty cennik usług bez ukrytych kosztów na koniec pracy.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 7 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Szybkie terminy</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Posiadamy elastyczne harmonogramy, dzięki czemu minimalizujemy czas oczekiwania na start.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 8 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-full bg-brandRed text-white flex items-center justify-center mb-4 shadow-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg mb-2 text-white">Obsługa każdego klienta</h3>
+                        <p class="text-brandGray/70 text-sm leading-relaxed">Pracujemy zarówno dla osób prywatnych na posesjach, jak i dla wielkich korporacji.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- JAK WYGLĄDA WSPÓŁPRACA (TIMELINE) SECTION -->
+    <section class="py-24 bg-brandGray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Jak działamy?</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-brandGreen tracking-tight mb-4">
+                    Etapy Naszej Współpracy
+                </h2>
+                <p class="text-brandTextLight text-base sm:text-lg">
+                    Poznaj przejrzysty proces od momentu pierwszego kontaktu aż do pomyślnego zakończenia prac ziemnych.
+                </p>
+            </div>
+
+            <!-- Dynamic Interactive Vertical Timeline for both Mobile and Desktop -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Center vertical line (desktop) / Left vertical line (mobile) -->
+                <div class="absolute left-8 md:left-1/2 md:-translate-x-1/2 top-0 h-full w-1 bg-gradient-to-b from-brandGreen via-brandRed to-brandGreen rounded-full opacity-30"></div>
+
+                <div class="space-y-16">
+                    
+                    <!-- Step 1: Kontakt telefoniczny -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
+                        <!-- Left blank on desktop (will be title or desc, depending on pattern) -->
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+                            <h3 class="font-display font-bold text-xl text-brandGreen mb-2">1. Kontakt telefoniczny</h3>
+                            <p class="text-brandTextLight text-sm sm:text-base leading-relaxed">
+                                Zadzwoń pod numer <span class="font-semibold text-brandGreen">884 641 888</span> lub wyślij zapytanie. Odpowiemy niezwłocznie, aby wstępnie ustalić zakres robót.
+                            </p>
+                        </div>
+                        <!-- Number Circle badge with SVG -->
+                        <div class="absolute left-1 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-brandGreen text-white border-4 border-white shadow-lg z-10 order-1">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </div>
+                        <!-- Right empty -->
+                        <div class="w-full md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+
+                    <!-- Step 2: Omówienie zakresu prac -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
+                        <div class="w-full md:w-1/2 md:pr-12 order-3 hidden md:block"></div>
+                        <!-- Number Circle badge with SVG -->
+                        <div class="absolute left-1 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-brandRed text-white border-4 border-white shadow-lg z-10 order-1">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                        </div>
+                        <!-- Right side (text) -->
+                        <div class="w-full md:w-1/2 md:pl-12 order-2">
+                            <h3 class="font-display font-bold text-xl text-brandGreen mb-2">2. Omówienie zakresu prac</h3>
+                            <p class="text-brandTextLight text-sm sm:text-base leading-relaxed">
+                                Dokonujemy bezpłatnej konsultacji technicznej. Omawiamy szczegółowe zapotrzebowanie na koparkę i wywrotkę oraz przedstawiamy rzetelną wycenę końcową.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Przyjazd na miejsce -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
+                        <!-- Left side (text) -->
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+                            <h3 class="font-display font-bold text-xl text-brandGreen mb-2">3. Przyjazd na miejsce</h3>
+                            <p class="text-brandTextLight text-sm sm:text-base leading-relaxed">
+                                Dostarczamy maszyny i odpowiedni osprzęt na wskazany plac budowy punktualnie o omówionej porze. Natychmiast zabezpieczamy i przygotowujemy stanowisko.
+                            </p>
+                        </div>
+                        <!-- Number Circle badge with SVG -->
+                        <div class="absolute left-1 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-brandGreen text-white border-4 border-white shadow-lg z-10 order-1">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8h4l4 4v4a1 1 0 01-1 1h-1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+
+                    <!-- Step 4: Realizacja usługi -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
+                        <div class="w-full md:w-1/2 md:pr-12 order-3 hidden md:block"></div>
+                        <!-- Number Circle badge with SVG -->
+                        <div class="absolute left-1 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-brandRed text-white border-4 border-white shadow-lg z-10 order-1">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                            </svg>
+                        </div>
+                        <!-- Right side (text) -->
+                        <div class="w-full md:w-1/2 md:pl-12 order-2">
+                            <h3 class="font-display font-bold text-xl text-brandGreen mb-2">4. Realizacja usługi</h3>
+                            <p class="text-brandTextLight text-sm sm:text-base leading-relaxed">
+                                Nasz wykwalifikowany operator przystępuje do realizacji prac ziemnych. Działamy sprawnie, dbając o bezpieczeństwo instalacji i struktur na działce.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Zadowolony klient -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
+                        <!-- Left side (text) -->
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+                            <h3 class="font-display font-bold text-xl text-brandGreen mb-2">5. Zadowolony klient</h3>
+                            <p class="text-brandTextLight text-sm sm:text-base leading-relaxed">
+                                Dokonujemy odbioru wykonanych prac wspólnie z inwestorem. Przekazujemy teren czysty, uporządkowany i gotowy do dalszych etapów budowy.
+                            </p>
+                        </div>
+                        <!-- Number Circle badge with SVG -->
+                        <div class="absolute left-1 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-brandGreen text-white border-4 border-white shadow-lg z-10 order-1">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT SECTION (RESTYLED WITHOUT FORM) -->
+    <section id="kontakt" class="py-24 bg-white relative scroll-mt-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <!-- Section Tag -->
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2 border-l-4 border-brandRed pl-3 inline-block">Błyskawiczny kontakt</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-brandGreen tracking-tight leading-tight mb-6">
+                    Skontaktuj się z nami już dziś!
+                </h2>
+                <p class="text-brandTextLight text-base sm:text-lg max-w-2xl mx-auto">
+                    Nasi specjaliści czekają na Twoje zapytanie. Odpowiadamy błyskawicznie, pomagamy dobrać optymalną maszynę i przygotowujemy darmową wycenę robót.
+                </p>
+            </div>
+
+            <!-- Direct Contact Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 reveal">
+                <!-- Box 1: Phone -->
+                <div class="bg-brandGreenLight border border-brandGreen/10 rounded-2xl p-8 relative overflow-hidden group flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center gap-5 relative z-10 mb-6">
+                        <div class="w-12 h-12 bg-brandGreen text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.24 2.46.68 3.58a1 1 0 0 1-.27 1.11l-2.2 2.2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-brandGreen font-bold tracking-widest uppercase">Zadzwoń bezpośrednio</p>
+                            <p class="text-2xl sm:text-3xl font-display font-extrabold text-brandGreen mt-1">884 641 888</p>
+                        </div>
+                    </div>
+                    <!-- Action button within card -->
+                    <a href="tel:884641888" class="shine-effect w-full bg-brandRed hover:bg-brandRedHover text-white py-3.5 rounded-xl font-bold shadow-lg transition-transform duration-200 hover:-translate-y-0.5 flex items-center justify-center gap-2 relative z-10 text-center">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.24 2.46.68 3.58a1 1 0 0 1-.27 1.11l-2.2 2.2z"/>
+                        </svg>
+                        Zadzwoń teraz
+                    </a>
+                </div>
+
+                <!-- Box 2: Facebook Link -->
+                <div class="bg-[#1877F2]/5 border border-[#1877F2]/10 rounded-2xl p-8 group flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-6">
+                        <div class="w-12 h-12 bg-[#1877F2] text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                            <!-- Facebook SVG -->
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-[#1877F2] font-bold tracking-widest uppercase font-display">Jesteśmy na Facebooku</p>
+                            <p class="text-sm sm:text-base font-bold text-brandTextDark mt-0.5">Aktualne realizacje i zdjęcia!</p>
+                        </div>
+                    </div>
+                    <a href="https://www.facebook.com/profile.php?id=61586097581719" target="_blank" rel="noopener noreferrer" class="bg-[#1877F2] hover:bg-[#166fe5] text-white text-sm font-bold py-3.5 px-4 rounded-xl text-center transition-colors shadow flex items-center justify-center gap-2">
+                        Odwiedź nas na Facebooku
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING ACCENTS -->
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Przewiń do góry" class="fixed bottom-6 right-6 bg-brandGreen hover:bg-brandGreenHover text-white p-3 rounded-full shadow-2xl transition-all duration-300 opacity-0 translate-y-10 scale-90 z-[999] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-brandGreen text-white py-16 relative overflow-hidden border-t border-white/10">
+        <!-- Accent decorative overlay grids -->
+        <div class="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                
+                <!-- Col 1: About company / Logo -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.ibb.co/k648PV2Q/612725757-1805693040201911-4830537511870457540-n.jpg" 
+                             alt="Logo" 
+                             class="w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-md">
+                        <div class="leading-none">
+                            <span class="font-display font-extrabold text-white text-lg sm:text-xl tracking-wider block">
+                                KOPARKA WYWROTKA
+                            </span>
+                            <span class="text-xs font-semibold text-brandRed tracking-widest uppercase block mt-0.5">
+                                USŁUGI ZIEMNE
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-white/80 text-sm font-light leading-relaxed">
+                        Profesjonalne usługi ziemne i transportowe. Gwarantujemy fachowe podejście, sprawny sprzęt oraz terminowość. Skontaktuj się już dziś.
+                    </p>
+                </div>
+
+                <!-- Col 2: Services shortcuts -->
+                <div>
+                    <h5 class="font-display font-bold text-base uppercase tracking-wider mb-6 text-white border-b border-white/10 pb-2">Nasze Usługi</h5>
+                    <ul class="space-y-3 text-white/80 text-sm font-light">
+                        <li><a href="#uslugi" class="hover:text-brandRed transition-colors">Roboty ziemne</a></li>
+                        <li><a href="#uslugi" class="hover:text-brandRed transition-colors">Wykopy pod fundamenty</a></li>
+                        <li><a href="#uslugi" class="hover:text-brandRed transition-colors">Niwelacja terenu</a></li>
+                        <li><a href="#uslugi" class="hover:text-brandRed transition-colors">Transport wywrotką</a></li>
+                        <li><a href="#uslugi" class="hover:text-brandRed transition-colors">Wyrównywanie działek</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Areas & shortcuts -->
+                <div>
+                    <h5 class="font-display font-bold text-base uppercase tracking-wider mb-6 text-white border-b border-white/10 pb-2">Obszar Działania</h5>
+                    <p class="text-white/80 text-sm font-light leading-relaxed">
+                        Działamy głównie na terenie województwa śląskiego oraz okolicznych miejscowości. Przy większych zleceniach realizujemy prace na terenie całej Polski południowej.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2 text-brandRed font-bold text-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brandRed animate-ping block"></span>
+                        Śląsk i okolice
+                    </div>
+                </div>
+
+                <!-- Col 4: Contact details -->
+                <div>
+                    <h5 class="font-display font-bold text-base uppercase tracking-wider mb-6 text-white border-b border-white/10 pb-2">Kontakt</h5>
+                    <ul class="space-y-4 text-white/90 text-sm font-light">
+                        <li class="flex items-center gap-3">
+                            <span class="text-brandRed flex-shrink-0">
+                                <svg class="w-5 h-5 text-brandRed" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <p class="text-xs text-white/50 font-bold uppercase">Telefon alarmowy</p>
+                                <a href="tel:884641888" class="text-lg font-bold hover:text-brandRed transition-colors">884 641 888</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-brandRed flex-shrink-0">
+                                <svg class="w-5 h-5 text-brandRed" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <p class="text-xs text-white/50 font-bold uppercase font-sans">Facebook fanpage</p>
+                                <a href="https://www.facebook.com/profile.php?id=61586097581719" target="_blank" rel="noopener noreferrer" class="hover:text-brandRed transition-colors font-medium">Koparka Wywrotka Usługi</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-white/10 my-10">
+
+            <!-- Copyright area -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 font-light">
+                <p>&copy; 2026 Koparka Wywrotka Usługi. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex gap-4">
+                    <span>Projekt i wykonanie: Koparka Wywrotka Usługi</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE VANILLA JAVASCRIPT ACTIONS -->
+    <script>
+        // Data for Lightbox Images and Descriptions
+        const galleryImages = [
+            {
+                src: "https://i.ibb.co/nqpQScPS/614962532-122102612469203252-7665939470002349444-n.jpg",
+                title: "Prace ziemne i załadunek koparką",
+                desc: "Wykop, profilowanie poziomu oraz mechaniczne ładowanie kruszywa o wysokiej masie na placu budowy."
+            },
+            {
+                src: "https://i.ibb.co/mCdJwKY4/615078276-122102612553203252-3449471778006577850-n.jpg",
+                title: "Transport i rozładunek wywrotką",
+                desc: "Sprawny przewóz kruszyw i wysyp urobku we wskazanym miejscu z zachowaniem najwyższej ostrożności."
+            }
+        ];
+        
+        let activeImageIndex = 0;
+
+        // 1. Navigation Bar dynamic transition on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('glass-header', 'shadow-lg', 'py-3');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-4');
+                navbar.classList.remove('glass-header', 'shadow-lg', 'py-3');
+            }
+        });
+
+        // 2. Mobile Menu / Drawer toggles
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpened = mobileDrawer.classList.contains('hidden');
+            if (isOpened) {
+                // Open Menu
+                mobileDrawer.classList.remove('hidden');
+                // Small timeout to trigger css transition height
+                setTimeout(() => {
+                    mobileDrawer.style.maxHeight = '500px';
+                }, 10);
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                // Close Menu
+                closeDrawer();
+            }
+        });
+
+        function closeDrawer() {
+            mobileDrawer.style.maxHeight = '0px';
+            setTimeout(() => {
+                mobileDrawer.classList.add('hidden');
+            }, 300);
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // Close mobile drawer when clicking nav links
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeDrawer();
+            });
+        });
+
+        // 3. Scroll Reveal Animations (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const observerOptions = {
+            root: null,
+            threshold: 0.1, // trigger when 10% of element is on screen
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    // Stop observing once animated
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(elem => {
+            revealObserver.observe(elem);
+        });
+
+        // 4. Back-to-top button dynamic scroll appear and trigger
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'scale-90');
+                backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'scale-90');
+                backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 5. Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+
+        function openLightbox(index) {
+            activeImageIndex = index;
+            updateLightboxContent();
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.classList.add('overflow-hidden'); // Lock scroll behind
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden'); // Unlock scroll
+        }
+
+        function updateLightboxContent() {
+            const data = galleryImages[activeImageIndex];
+            
+            // Temporary scale animation triggers
+            lightboxImg.style.transform = 'scale(0.95)';
+            lightboxImg.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                lightboxImg.src = data.src;
+                lightboxImg.alt = data.title;
+                lightboxCaption.textContent = data.title;
+                lightboxDesc.textContent = data.desc;
+                
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.opacity = '1';
+            }, 150);
+        }
+
+        function nextImage() {
+            activeImageIndex = (activeImageIndex + 1) % galleryImages.length;
+            updateLightboxContent();
+        }
+
+        function prevImage() {
+            activeImageIndex = (activeImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxContent();
+        }
+
+        // Close lightbox on pressing Escape key, navigate on arrows
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            }
+        });
+
+        // Close lightbox on click outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.id === 'lightbox-img' || e.target.parentNode.id === 'lightbox-img') {
+                if (e.target !== lightboxImg && e.target.tagName !== 'BUTTON' && e.target.closest('button') === null) {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
